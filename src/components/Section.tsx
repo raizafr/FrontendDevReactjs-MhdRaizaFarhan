@@ -2,9 +2,15 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
 
+interface ItemType{
+  id:number;
+  name:string;
+  pictureId:string;
+}
+
 export default function Section() {
-  const [data, setData] = useState<[]>([]);
-  const [dataRestaurant, setDataRestaurant] = useState<[]>([]);
+  const [data, setData] = useState<ItemType[]>([]);
+  const [dataRestaurant, setDataRestaurant] = useState<ItemType[]>([]);
 
   useEffect(() => {
     async function getData() {
@@ -13,7 +19,7 @@ export default function Section() {
         setData(res.data.restaurants);
         setDataRestaurant(res.data.restaurants.slice(0, 8));
       } catch (err) {
-        console.log(res);
+        console.log(err);
       }
     }
     getData();
@@ -30,9 +36,9 @@ export default function Section() {
     <section className="px-5 space-y-8">
       <h1 className="text-3xl">All Restaurants</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center">
-        {dataRestaurant.map((item: any) => (
+        {dataRestaurant.map((item:ItemType) => (
           <div key={item.id}>
-            <Card name={item.name} pictureId={item.pictureId} />
+            <Card name={item.name} picturuId={item.pictureId} />
           </div>
         ))}
       </div>

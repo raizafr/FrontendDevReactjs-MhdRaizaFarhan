@@ -5,11 +5,11 @@ interface CardProps {
   picturuId: string;
 }
 
-export default function Card({ name, pictureId }: CardProps) {
+export default function Card({ name, picturuId }: CardProps) {
   return (
     <div className="w-fit space-y-3">
       <img
-        src={`https://restaurant-api.dicoding.dev/images/medium/${pictureId}`}
+        src={`https://restaurant-api.dicoding.dev/images/medium/${picturuId}`}
         alt={name}
         className="w-48 h-32"
       />
